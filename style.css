@@ -20,6 +20,6 @@ body {
   grid-template-columns: repeat(16, 1fr);
 }
 
-.square {
-
+.black {
+  background-color: black;
 }
