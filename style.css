@@ -4,18 +4,37 @@
   padding: 0;
 }
 
+html {
+  height: 100%;
+}
+
 body {
+  height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.clearBtn {
+  border: 0px;
+  border-radius: 5px;
+  padding: 12px 24px;
+  background-color: rgb(62, 189, 194);
+  font-size: 16px;
+}
+
+.clearBtn:hover {
+  cursor: pointer;
 }
 
 .container{
   background-color: rgb(255, 255, 255);
   border: 5px solid rgb(75, 75, 75);
   border-radius: 10px;
-  margin-top: 50px;
-  height: 500px;
-  width: 500px;
+  height: 720px;
+  width: 720px;
   display: grid;
   grid-template-columns: repeat(16, 1fr);
 }
