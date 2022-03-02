@@ -38,7 +38,3 @@ body {
   display: grid;
   grid-template-columns: repeat(16, 1fr);
 }
-
-.black {
-  background-color: black;
-}
