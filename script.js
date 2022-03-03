@@ -1,6 +1,12 @@
 const container = document.querySelector(".container");
 const clearBtn = document.querySelector(".clearBtn");
+const toggleSwitch = document.querySelector(".switch > input");
 let isMouseDown = false;
+let isColor = false;
+
+toggleSwitch.addEventListener("click", () => {
+  isColor ? (isColor = false) : (isColor = true);
+});
 
 clearBtn.addEventListener("click", () => {
   if (askGrid() === "ERROR") {
@@ -15,12 +21,22 @@ function createBoard(size) {
   for (let i = 0; i < size * size; i++) {
     const div = document.createElement("div");
     div.addEventListener("mousedown", (e) => {
-      paintingBlack(e);
       isMouseDown = true;
+      if (isColor) {
+        paintingColor(e);
+      } else {
+        paintingBlack(e);
+      }
     });
     div.addEventListener("mouseup", () => (isMouseDown = false));
     div.addEventListener("mouseenter", (e) => {
-      if (isMouseDown) paintingBlack(e);
+      if (isMouseDown) {
+        if (isColor) {
+          paintingColor(e);
+        } else {
+          paintingBlack(e);
+        }
+      }
     });
     div.addEventListener("mousedown", (e) => e.preventDefault());
     container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
@@ -37,17 +53,16 @@ function paintingBlack(e) {
 }
 
 function setOpacity(backgroundColor) {
-  if (!backgroundColor) {
-    return 0.1;
-  } else {
+  if (backgroundColor.includes(".")) {
     let opacity = backgroundColor.slice(
       backgroundColor.indexOf(".") - 1,
       backgroundColor.length - 1
     );
     opacity = +opacity;
-    if (opacity < 1 && opacity !== 0){
-      console.log(opacity)
-      return  opacity += 0.1;
+    return (opacity += 0.1);
+  } else {
+    if (!backgroundColor || backgroundColor !== "rgb(0, 0, 0)") {
+      return 0.1;
     }
   }
 }
