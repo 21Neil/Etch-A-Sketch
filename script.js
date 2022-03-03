@@ -8,6 +8,8 @@ toggleSwitch.addEventListener("click", () => {
   isColor ? (isColor = false) : (isColor = true);
 });
 
+window.addEventListener("mouseup", () => (isMouseDown = false));
+
 clearBtn.addEventListener("click", () => {
   if (askGrid() === "ERROR") {
     return;
