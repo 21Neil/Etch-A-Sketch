@@ -13,7 +13,7 @@ clearBtn.addEventListener("click", () => {
 function createBoard(size) {
   for (let i = 0; i < size * size; i++) {
     const div = document.createElement("div");
-    div.addEventListener("mouseenter", painting);
+    div.addEventListener("mouseenter", paintingBlack);
     container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
     container.appendChild(div);
   }
@@ -21,8 +21,15 @@ function createBoard(size) {
 
 createBoard(16);
 
-function painting(e) {
+function paintingBlack(e) {
   e.path[0].style.backgroundColor = 'black';
+}
+
+function paintingColor(e) {
+  let r = Math.floor(Math.random() * 256);
+  let g = Math.floor(Math.random() * 256);
+  let b = Math.floor(Math.random() * 256);
+  e.path[0].style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 }
 
 function clear() {
