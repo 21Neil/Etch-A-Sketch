@@ -15,13 +15,14 @@ body {
   justify-content: center;
   align-items: center;
   gap: 24px;
+  background-color: rgb(106, 168, 248);
 }
 
 .clearBtn {
   border: 0px;
   border-radius: 5px;
   padding: 12px 24px;
-  background-color: rgb(62, 189, 194);
+  background-color: rgb(67, 219, 174);
   font-size: 16px;
 }
 
